@@ -19,12 +19,12 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
         super.onViewCreated(view, savedInstanceState)
 
 
-
         // Обязательная штука подключения адаптера
         val adapter = OrderRVAdapter(MenuRepository.Base.customOrderList.value!!)
         binding.menuRV.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@OrderFragment.context)
+
 
         }
 
@@ -32,10 +32,12 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
         MenuRepository.Base.customOrderList.observe(viewLifecycleOwner) { updatedOrderList ->
             adapter.order = updatedOrderList
             adapter.notifyDataSetChanged()
+
+            val sum = updatedOrderList.sumOf { it.count * it.price }
+            binding.sumTV.text = "Сумма: $sum рублей"
+
         }
 
-
     }
-
 
 }

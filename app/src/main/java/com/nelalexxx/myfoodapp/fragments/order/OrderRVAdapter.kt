@@ -18,6 +18,8 @@ class OrderRVAdapter (
     // parameter is a layout(view) that we need as an item in recycler view
     // we must return standart object for recycler view thats why we inherit
     // from .viewholder  : RecyclerView.ViewHolder(itemView)
+
+
     inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // этот код пишем если хотим исопльзовать viewBinding для обновления ui
         val binding = OrderItemLayoutBinding.bind(itemView)
@@ -42,10 +44,19 @@ class OrderRVAdapter (
             foodImgV.setImageResource(menuItem.sourceId)
             descriptionTV.text = menuItem.descriptionText
             priceTV.text = "${menuItem.price} рублей"
+            ammountTV.text = menuItem.count.toString()
 
-            removeFromOrderBtn.setOnClickListener {
-                menuRepository.deleteFromOrder()
+            removeBtn.setOnClickListener {
+                menuRepository.deleteFromOrder(menuItem)
             }
+
+            addBtn.setOnClickListener{
+                menuRepository.addToOrder(menuItem)
+
+            }
+
+
+
         }
     }
 }

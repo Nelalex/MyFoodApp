@@ -7,7 +7,7 @@ import com.nelalexxx.myfoodapp.fragments.MenuItem
 interface MenuRepository {
 
     fun addToOrder(menuItem: MenuItem)
-    fun deleteFromOrder()
+    fun deleteFromOrder(menuItem: MenuItem)
 
 
 
@@ -24,15 +24,27 @@ class Base  : MenuRepository {
     }
     override fun addToOrder(menuItem: MenuItem) {
         val currentList = customOrderList.value ?: mutableListOf()
-        currentList.add(menuItem)
+        val existingItem = currentList.find { it.sourceId == menuItem.sourceId }
+        if (existingItem != null) {
+            existingItem.count++ // Increment count if item exists
+        } else {
+            menuItem.count = 1 // Initialize count for new item
+            currentList.add(menuItem)
+        }
         customOrderList.postValue(currentList)
     }
 
-    override fun deleteFromOrder() {
+    override fun deleteFromOrder(menuItem: MenuItem) {
         val currentList = customOrderList.value ?: mutableListOf()
-        if (currentList.isNotEmpty())
-            currentList.removeAt(currentList.lastIndex)
-        customOrderList.postValue(currentList)
+        val existingItem = currentList.find { it.sourceId== menuItem.sourceId }
+        if (existingItem != null) {
+            if (existingItem.count > 1) {
+                existingItem.count-- // Decrement count if greater than 1
+            } else {
+                currentList.remove(existingItem) // Remove item if count is 1
+            }
+            customOrderList.postValue(currentList)
+        }
     }
 
 
