@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nelalexxx.myfoodapp.databinding.ActivityMainBinding
+import com.nelalexxx.myfoodapp.viewModel.MenuRepository
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +32,19 @@ class MainActivity : AppCompatActivity() {
         // Связываем BottomNavigationView с NavController
         NavigationUI.setupWithNavController(binding.bottomNavMenu, navController)
 
+        binding.bottomNavMenu.getOrCreateBadge(R.id.orderFragment)
+
+
+        val badge = binding.bottomNavMenu.getOrCreateBadge(R.id.orderFragment)
+
+
+
+        MenuRepository.Base.customOrderList.observe(this) { updatedOrderList ->
+            val totalSum = updatedOrderList.sumOf { it.count * it.price }
+            badge.number = totalSum
+            badge.isVisible = totalSum > 0
+            badge.maxCharacterCount = 5
+        }
 
 
 
@@ -40,28 +55,3 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-
-/*
-        // можно сделать пустой лист , можно потом подгружать с бд
-        // место где хранятся значения для ui
-        var todoList = mutableListOf(
-            ToDo("KEKW", false),
-            ToDo("KEKW2", true)
-        )
-        // Обязательная штука подключения адаптера
-        val adapter = TodoAdapter(todoList)
-        binding.rvToDo.apply {
-            this.adapter = adapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
-        }
-
-        binding.AddBtn.setOnClickListener {
-            // нам нужен обьект класса to do который мы просто добавим в лист
-            val title = binding.ToDoEdit.text.toString()
-            val todo = ToDo(title, false)
-            todoList.add(todo)
-            adapter.notifyItemInserted(todoList.size - 1)
-            // есть аналог adapter.notifyDataSetChanged но он обновляет все эжлементы RecyclerView
-            // а этот обновляет один
-        }
- */

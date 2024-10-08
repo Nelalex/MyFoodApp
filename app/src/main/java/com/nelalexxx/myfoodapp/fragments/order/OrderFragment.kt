@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nelalexxx.myfoodapp.MyApp.Companion.menuRepository
+import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.databinding.OrderFragmentLayoutBinding
 import com.nelalexxx.myfoodapp.fragments.BindingFragment
 import com.nelalexxx.myfoodapp.viewModel.MenuRepository
@@ -17,6 +19,8 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
 
         // Обязательная штука подключения адаптера

@@ -26,5 +26,8 @@ class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>(){
             layoutManager = LinearLayoutManager(this@MenuFragment.context)
         }
 
+
+
+
     }
 }

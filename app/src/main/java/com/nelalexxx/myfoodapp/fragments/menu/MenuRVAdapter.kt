@@ -1,12 +1,17 @@
 package com.nelalexxx.myfoodapp.fragments.menu
 
+import android.view.Gravity
 import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.databinding.MenuItemLayoutBinding
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.nelalexxx.myfoodapp.MyApp
 import com.nelalexxx.myfoodapp.MyApp.Companion.menuRepository
 import com.nelalexxx.myfoodapp.fragments.MenuItem
 
@@ -46,6 +51,15 @@ class MenuRVAdapter (
 
             addToOrderBtn.setOnClickListener {
                 menuRepository.addToOrder(menuItem)
+
+
+                Snackbar.make(it, "Добавлено в заказ", Snackbar.LENGTH_SHORT) .apply {
+                    view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply {
+                        gravity = Gravity.BOTTOM
+                        bottomMargin = 200 // Set the bottom margin to 200 pixels
+                    }
+                    show()
+                }
             }
         }
 
