@@ -1,5 +1,6 @@
 package com.nelalexxx.myfoodapp.viewModel
 
+import androidx.lifecycle.MutableLiveData
 import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.fragments.MenuItem
 
@@ -18,15 +19,20 @@ class Base  : MenuRepository {
             MenuItem(R.drawable.pelmeni, "Пельмен очень вкусный", 2000),
             MenuItem(R.drawable.makaroni, "Мокарон очень вкусний", 4000)
         )
-        var customOrderList: MutableList<MenuItem> = mutableListOf()
+
+        val customOrderList = MutableLiveData<MutableList<MenuItem>>(mutableListOf())
     }
     override fun addToOrder(menuItem: MenuItem) {
-        customOrderList.add(menuItem)
+        val currentList = customOrderList.value ?: mutableListOf()
+        currentList.add(menuItem)
+        customOrderList.postValue(currentList)
     }
 
     override fun deleteFromOrder() {
-        if (customOrderList.isNotEmpty())
-            customOrderList.removeAt(customOrderList.lastIndex)
+        val currentList = customOrderList.value ?: mutableListOf()
+        if (currentList.isNotEmpty())
+            currentList.removeAt(currentList.lastIndex)
+        customOrderList.postValue(currentList)
     }
 
 
