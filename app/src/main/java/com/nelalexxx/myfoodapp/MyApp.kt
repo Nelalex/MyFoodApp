@@ -1,7 +1,7 @@
 package com.nelalexxx.myfoodapp
 
 import android.app.Application
-import com.nelalexxx.myfoodapp.viewModel.MenuRepository
+import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 
 class MyApp: Application() {
 

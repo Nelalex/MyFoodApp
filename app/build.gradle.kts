@@ -51,6 +51,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
+    implementation("androidx.cardview:cardview:1.0.0")
+
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 

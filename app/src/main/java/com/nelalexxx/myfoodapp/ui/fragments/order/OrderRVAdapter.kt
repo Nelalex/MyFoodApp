@@ -1,4 +1,4 @@
-package com.nelalexxx.myfoodapp.fragments.order
+package com.nelalexxx.myfoodapp.ui.fragments.order
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nelalexxx.myfoodapp.MyApp.Companion.menuRepository
 import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.databinding.OrderItemLayoutBinding
-import com.nelalexxx.myfoodapp.fragments.MenuItem
+import com.nelalexxx.myfoodapp.data.models.MenuItem
 
 // now we need do understand which data it should set to which data
 //we created a data class and now can access him from constructor

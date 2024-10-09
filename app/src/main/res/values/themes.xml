@@ -1,9 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.MyFoodApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Базовая тема приложения -->
+    <style name="Theme.MyFoodApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Настройка цветов -->
+        <item name="colorPrimary">#000105</item>  <!-- Янтарный -->
+        <item name="colorPrimaryVariant">#000000</item> <!-- Темно-янтарный -->
+        <item name="colorOnPrimary">#000000</item> <!-- Черный -->
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#03DAC5</item> <!-- Бирюзовый -->
+        <item name="colorSecondaryVariant">#018786</item> <!--Темно-бирюзовый -->
+        <item name="colorOnSecondary">#000000</item> <!-- Черный -->
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <!-- Темная тема -->
+        <item name="android:windowBackground">#000000</item>
+        <item name="colorSurface">#000312</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="colorError">#CF6679</item>
     </style>
 
-    <style name="Theme.MyFoodApp" parent="Base.Theme.MyFoodApp" />
-</resources>
+    </resources>

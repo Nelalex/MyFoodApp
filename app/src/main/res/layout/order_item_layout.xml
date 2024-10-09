@@ -1,8 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/orderFragmentLayout"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+
+
+    android:background="@drawable/rounded_background"
+    android:elevation="4dp">
 
     <ImageView
         android:id="@+id/foodImgV"
@@ -23,43 +28,51 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/priceTV"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="1000 рублей" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/itemCountLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/addBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_add"
+                android:background="@null"
+                app:tint="@color/white"/>
 
             <TextView
-                android:id="@+id/priceTV"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:id="@+id/ammountTV"
+                android:layout_width="16dp"
+                android:layout_height="20dp"
                 android:gravity="center"
-                android:text="1000 рублей" />
+                android:text="1 штука" />
 
-
-            <LinearLayout
-                android:id="@+id/itemCountLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/addBtn"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@android:drawable/ic_menu_add" />
-
-                    <TextView
-                        android:id="@+id/ammountTV"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:gravity="center"
-                        android:text="1 штука" />
-
-                    <ImageButton
-                        android:id="@+id/removeBtn"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/delete_icon" />
+            <ImageButton
+                android:id="@+id/removeBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/remove_icon"
+                android:background="@null"
+                app:tint="@color/white" />
             </LinearLayout>
         <Space
             android:layout_width="match_parent"

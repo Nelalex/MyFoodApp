@@ -1,4 +1,4 @@
-package com.nelalexxx.myfoodapp.fragments.menu
+package com.nelalexxx.myfoodapp.ui.fragments.menu
 
 import android.view.Gravity
 import com.nelalexxx.myfoodapp.R
@@ -8,12 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.nelalexxx.myfoodapp.MyApp
 import com.nelalexxx.myfoodapp.MyApp.Companion.menuRepository
-import com.nelalexxx.myfoodapp.fragments.MenuItem
+import com.nelalexxx.myfoodapp.data.models.MenuItem
 
 
 // now we need do understand which data it should set to which data

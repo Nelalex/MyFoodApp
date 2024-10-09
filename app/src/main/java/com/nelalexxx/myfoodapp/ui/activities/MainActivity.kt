@@ -1,12 +1,12 @@
-package com.nelalexxx.myfoodapp
+package com.nelalexxx.myfoodapp.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.databinding.ActivityMainBinding
-import com.nelalexxx.myfoodapp.viewModel.MenuRepository
+import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             val totalSum = updatedOrderList.sumOf { it.count * it.price }
             badge.number = totalSum
             badge.isVisible = totalSum > 0
-            badge.maxCharacterCount = 5
+            badge.maxCharacterCount = 6
         }
 
 

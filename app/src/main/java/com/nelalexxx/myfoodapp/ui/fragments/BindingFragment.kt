@@ -1,4 +1,4 @@
-package com.nelalexxx.myfoodapp.fragments
+package com.nelalexxx.myfoodapp.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

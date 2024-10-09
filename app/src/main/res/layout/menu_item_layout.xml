@@ -2,7 +2,12 @@
     android:id="@+id/menuFragmentLayout"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+
+
+    android:background="@drawable/rounded_background"
+    android:elevation="4dp"
+    >
 
     <ImageView
         android:id="@+id/foodImgV"
@@ -27,7 +32,8 @@
         android:id="@+id/addToOrderBtn"
         android:layout_width="48dp"
         android:layout_height="match_parent"
-        android:src="@android:drawable/ic_menu_add" />
+        android:src="@android:drawable/ic_menu_add"
+        android:background="@null"/>
 
 
 </LinearLayout>

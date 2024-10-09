@@ -1,16 +1,13 @@
-package com.nelalexxx.myfoodapp.fragments.order
+package com.nelalexxx.myfoodapp.ui.fragments.order
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.nelalexxx.myfoodapp.MyApp.Companion.menuRepository
-import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.databinding.OrderFragmentLayoutBinding
-import com.nelalexxx.myfoodapp.fragments.BindingFragment
-import com.nelalexxx.myfoodapp.viewModel.MenuRepository
+import com.nelalexxx.myfoodapp.ui.fragments.BindingFragment
+import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 
 class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
     override val bindingInflater: (LayoutInflater) -> ViewBinding
@@ -38,7 +35,7 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
             adapter.notifyDataSetChanged()
 
             val sum = updatedOrderList.sumOf { it.count * it.price }
-            binding.sumTV.text = "Сумма: $sum рублей"
+            binding.sumTV.text = "Сумма: $sum рублей\nСО СКИДКОЙ ДЛЯ ОЛЕГА: ${sum/3} РУБЛЯ"
 
         }
 

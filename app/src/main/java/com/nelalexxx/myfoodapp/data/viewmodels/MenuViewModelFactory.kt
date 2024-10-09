@@ -1,7 +1,8 @@
-package com.nelalexxx.myfoodapp.viewModel
+package com.nelalexxx.myfoodapp.data.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 
 class MenuViewModelFactory(val repository: MenuRepository) : ViewModelProvider.Factory {
 

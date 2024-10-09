@@ -6,14 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.activities.MainActivity">
 
     <TextView
         android:id="@+id/titleTV"
         android:text="Всем привет ето моя еда"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="80sp"/>
+        android:layout_height="56sp"
+
+
+        android:textSize="24sp"
+        android:background="@drawable/gradient_background"
+        android:elevation="4dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+
+
+        />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFrame"
@@ -23,15 +35,22 @@
         android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav_graph"
+
+
+        android:background="#515151"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_menu"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
+        android:layout_height="56sp"
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_menu"
         tools:visibility="visible"
+
+
+
+        android:background="@drawable/gradient_background"
 
 
         />
