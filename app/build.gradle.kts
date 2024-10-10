@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    kotlin("kapt")
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -54,33 +53,18 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     //LiveData
     implementation(libs.androidx.lifecycle.livedata.ktx)
-    //Gson
-    implementation(libs.gson)
     //Material design
     implementation(libs.material)
     // Architectural Components(google ViewModel)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    // Room
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
-    // Kotlin Extensions and Coroutines support for Room
-    implementation(libs.androidx.room.ktx)
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     // Coroutine Lifecycle Scopes
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.logging.interceptor)
     // Navigation Components
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    //Firebase
-//    implementation(libs.firebase.bom)
-//    implementation(libs.firebase.analytics.ktx)
-//    implementation(libs.firebase.firestore.ktx)
 
 }
