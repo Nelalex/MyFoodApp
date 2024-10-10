@@ -13,7 +13,7 @@
         android:text="@string/titleTextView"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="56sp"
+        android:layout_height="80sp"
 
         android:textSize="24sp"
         android:background="@drawable/gradient_background"
