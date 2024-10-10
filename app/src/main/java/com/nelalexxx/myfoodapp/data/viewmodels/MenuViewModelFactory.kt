@@ -7,8 +7,8 @@ import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 class MenuViewModelFactory(val repository: MenuRepository) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MenuViewModel::class.java)) {
-            return MenuViewModel(repository) as T
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(repository) as T
         } else
             throw IllegalStateException("ERROR")
     }

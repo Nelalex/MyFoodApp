@@ -5,23 +5,21 @@ import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.data.models.MenuItem
 
 interface MenuRepository {
-
     fun addToOrder(menuItem: MenuItem)
     fun deleteFromOrder(menuItem: MenuItem)
 
-
-
 class Base  : MenuRepository {
-
+    //Repository realisation
     companion object {
+        var totalSum: Int = 0
         val customMenuList: List<MenuItem> = listOf(
             MenuItem(R.drawable.booter, "Бутерброд очень вкусный", 1000),
             MenuItem(R.drawable.pelmeni, "Пельмен очень вкусный", 2000),
             MenuItem(R.drawable.makaroni, "Мокарон очень вкусний", 4000)
         )
-
         val customOrderList = MutableLiveData<MutableList<MenuItem>>(mutableListOf())
     }
+
     override fun addToOrder(menuItem: MenuItem) {
         val currentList = customOrderList.value ?: mutableListOf()
         val existingItem = currentList.find { it.sourceId == menuItem.sourceId }
