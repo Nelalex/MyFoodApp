@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Базовая тема приложения -->
+
     <style name="Theme.MyFoodApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Настройка цветов -->
         <item name="colorPrimary">#000105</item>  <!-- Янтарный -->
         <item name="colorPrimaryVariant">#000000</item> <!-- Темно-янтарный -->
         <item name="colorOnPrimary">#000000</item> <!-- Черный -->
@@ -11,7 +10,6 @@
         <item name="colorOnSecondary">#000000</item> <!-- Черный -->
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
 
         <!-- Темная тема -->
         <item name="android:windowBackground">#000000</item>

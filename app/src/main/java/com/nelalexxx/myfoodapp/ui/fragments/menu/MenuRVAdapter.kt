@@ -16,7 +16,7 @@ import com.nelalexxx.myfoodapp.databinding.MenuItemLayoutBinding
 class MenuRVAdapter(
     private var menu: List<MenuItem>,
     private var viewModel: MainViewModel
-) : RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() { // adapter=recyclerview.adapter<viewholder>()
+) : RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() {
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // binding
         val binding = MenuItemLayoutBinding.bind(itemView)

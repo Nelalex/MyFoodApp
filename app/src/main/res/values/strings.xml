@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyFoodApp</string>
+    <string name="titleTextView">Эксперементальная домашняя кухня</string>
+    <string name="resultSumTextViewText">ИТОГО:</string>
+    <string name="bottonNavigationItemMenuText">Меню</string>
+    <string name="bottonNavigationItemBasketText">Корзина</string>
 </resources>

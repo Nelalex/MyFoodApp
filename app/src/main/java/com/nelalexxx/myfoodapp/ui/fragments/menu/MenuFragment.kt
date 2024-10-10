@@ -14,7 +14,7 @@ import com.nelalexxx.myfoodapp.ui.fragments.BindingFragment
 class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>() {
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = MenuFragmentLayoutBinding::inflate
-    private val viewModel: MainViewModel by activityViewModels() // Use activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

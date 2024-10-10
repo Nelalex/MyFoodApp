@@ -17,12 +17,10 @@ class OrderRVAdapter(
     inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // binding
         val binding = OrderItemLayoutBinding.bind(itemView)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.order_item_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.order_item_layout, parent, false)
         return OrderViewHolder(view)
     }
 
@@ -44,7 +42,6 @@ class OrderRVAdapter(
 
             addBtn.setOnClickListener {
                 viewModel.addToOrder(menuItem)
-
             }
         }
     }

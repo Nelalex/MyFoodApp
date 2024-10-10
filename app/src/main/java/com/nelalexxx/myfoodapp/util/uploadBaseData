@@ -1,7 +1,7 @@
 Для загрузки данных в Firebase Storage вручную
 В MainActivity*
         GlobalScope.launch {
-           upload()
+           uploadBaseData()
         }
 
 fun uploadBaseData() {
@@ -17,7 +17,7 @@ fun uploadBaseData() {
         uploadTask.addOnSuccessListener {
             Log.d("TEST", "Image uploaded successfully")
         }.addOnFailureListener { exception ->
-            Log.e("TEST", "Error uploading image", exception)
+            Log.d("TEST", "Error uploading image", exception)
         }
     }
 }

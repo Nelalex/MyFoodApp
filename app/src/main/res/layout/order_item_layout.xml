@@ -5,7 +5,6 @@
     android:layout_height="160dp"
     android:orientation="horizontal"
 
-
     android:background="@drawable/rounded_background"
     android:elevation="4dp">
 
@@ -16,11 +15,10 @@
 
     <TextView
         android:id="@+id/descriptionTV"
-        android:layout_width="208dp"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="Тут много текста описания Например про еду  очень вкусную" />
+        android:gravity="center" />
 
     <LinearLayout
         android:id="@+id/itemPriceCountLayout"
@@ -37,8 +35,7 @@
             android:id="@+id/priceTV"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:gravity="center"
-            android:text="1000 рублей" />
+            android:gravity="center" />
 
         <Space
             android:layout_width="match_parent"
@@ -63,8 +60,7 @@
                 android:id="@+id/ammountTV"
                 android:layout_width="16dp"
                 android:layout_height="20dp"
-                android:gravity="center"
-                android:text="1 штука" />
+                android:gravity="center" />
 
             <ImageButton
                 android:id="@+id/removeBtn"
@@ -80,7 +76,6 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
 
 </LinearLayout>
 

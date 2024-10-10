@@ -4,10 +4,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menuFragment"
-        android:title="Меню"
+        android:title="@string/bottonNavigationItemMenuText"
         android:icon="@drawable/list_menu_icon" />
     <item
         android:id="@+id/orderFragment"
-        android:title="Корзина"
+        android:title="@string/bottonNavigationItemBasketText"
         android:icon="@drawable/basket_menu_icon" />
 </menu>

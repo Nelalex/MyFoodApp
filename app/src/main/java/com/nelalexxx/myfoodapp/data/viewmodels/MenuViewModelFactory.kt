@@ -10,7 +10,7 @@ class MenuViewModelFactory(private val repository: MenuRepository) : ViewModelPr
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(repository) as T
         } else
-            throw IllegalStateException("ERROR")
+            throw IllegalStateException("Ошибка создания ViewModel")
     }
 
 }

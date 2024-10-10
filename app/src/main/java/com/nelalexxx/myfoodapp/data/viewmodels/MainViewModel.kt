@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import com.google.firebase.Firebase
 import com.google.firebase.storage.storage
 import com.nelalexxx.myfoodapp.R
@@ -30,8 +31,7 @@ class MainViewModel(private val repository: MenuRepository) : ViewModel() {
         repository.deleteFromOrder(menuItem)
     }
 
-
-    suspend fun setupMenuData() {
+    private suspend fun setupMenuData() {
         val storage = Firebase.storage
         val listRef = storage.reference.child("images")
         val menuItems = mutableListOf<MenuItem>()
@@ -63,10 +63,14 @@ class MainViewModel(private val repository: MenuRepository) : ViewModel() {
         if (savedInstanceState == null) {
             viewModelScope.launch {
                 this@MainViewModel.setupMenuData()
-                navController.navigate(R.id.menuFragment)
+                navController.navigate(
+                    R.id.menuFragment,
+                    null,
+                    NavOptions.Builder()
+                        .setPopUpTo(R.id.loadingFragment, true)
+                        .build()
+                )
             }
         }
     }
-
-
 }

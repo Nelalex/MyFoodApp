@@ -4,10 +4,8 @@
     android:layout_height="160dp"
     android:orientation="horizontal"
 
-
     android:background="@drawable/rounded_background"
-    android:elevation="4dp"
-    >
+    android:elevation="4dp">
 
     <ImageView
         android:id="@+id/foodImgV"
@@ -18,15 +16,13 @@
         android:id="@+id/descriptionTV"
         android:layout_width="208dp"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Тут много текста описания Например про еду  очень вкусную"/>
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/priceTV"
         android:layout_width="80dp"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="1000 рублей"/>
+        android:gravity="center" />
 
     <ImageButton
         android:id="@+id/addToOrderBtn"
@@ -34,6 +30,5 @@
         android:layout_height="match_parent"
         android:src="@android:drawable/ic_menu_add"
         android:background="@null"/>
-
 
 </LinearLayout>
