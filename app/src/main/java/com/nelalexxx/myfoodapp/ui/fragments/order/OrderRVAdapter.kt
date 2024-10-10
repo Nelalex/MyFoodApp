@@ -9,10 +9,10 @@ import com.nelalexxx.myfoodapp.data.models.MenuItem
 import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
 import com.nelalexxx.myfoodapp.databinding.OrderItemLayoutBinding
 
-class OrderRVAdapter (
+class OrderRVAdapter(
     var order: List<MenuItem>,
     private var viewModel: MainViewModel
-): RecyclerView.Adapter<OrderRVAdapter.OrderViewHolder>() { // adapter=recyclerview.adapter<viewholder>()
+) : RecyclerView.Adapter<OrderRVAdapter.OrderViewHolder>() { // adapter=recyclerview.adapter<viewholder>()
 
     inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // binding
@@ -42,7 +42,7 @@ class OrderRVAdapter (
                 viewModel.deleteFromOrder(menuItem)
             }
 
-            addBtn.setOnClickListener{
+            addBtn.setOnClickListener {
                 viewModel.addToOrder(menuItem)
 
             }

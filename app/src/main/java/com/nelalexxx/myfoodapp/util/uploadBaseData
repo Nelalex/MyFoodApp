@@ -1,0 +1,23 @@
+Для загрузки данных в Firebase Storage вручную
+В MainActivity*
+        GlobalScope.launch {
+           upload()
+        }
+
+fun uploadBaseData() {
+    val storage = Firebase.storage
+    for (item in MenuRepository.BaseData.customMenuList) {
+        val storageRef = storage.reference.child("images/${item.sourceId}")
+        val metadata = storageMetadata {
+            setCustomMetadata("descriptionText", item.descriptionText)
+            setCustomMetadata("price", item.price.toString())
+        }
+        val inputStream = resources.openRawResource(item.sourceId) // Получаем InputStream
+        val uploadTask = storageRef.putStream(inputStream, metadata) // Загружаем из InputStream
+        uploadTask.addOnSuccessListener {
+            Log.d("TEST", "Image uploaded successfully")
+        }.addOnFailureListener { exception ->
+            Log.e("TEST", "Error uploading image", exception)
+        }
+    }
+}

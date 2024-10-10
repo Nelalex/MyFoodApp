@@ -11,7 +11,7 @@ import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
 import com.nelalexxx.myfoodapp.databinding.MenuFragmentLayoutBinding
 import com.nelalexxx.myfoodapp.ui.fragments.BindingFragment
 
-class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>(){
+class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>() {
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = MenuFragmentLayoutBinding::inflate
     private val viewModel: MainViewModel by activityViewModels() // Use activityViewModels()
@@ -19,7 +19,7 @@ class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //adapter
-        val adapter = MenuRVAdapter(MenuRepository.Base.customMenuList, viewModel)
+        val adapter = MenuRVAdapter(MenuRepository.BaseData.customMenuList, viewModel)
         binding.menuRV.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@MenuFragment.context)

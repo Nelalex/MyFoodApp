@@ -7,7 +7,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
-import com.nelalexxx.myfoodapp.data.repositories.MenuRepository.Base.Companion.totalSum
 import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
 import com.nelalexxx.myfoodapp.data.viewmodels.MenuViewModelFactory
 import com.nelalexxx.myfoodapp.databinding.ActivityMainBinding
@@ -15,15 +14,13 @@ import com.nelalexxx.myfoodapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
 
-    lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //viewModel
-        val viewModelFactory = MenuViewModelFactory(MenuRepository.Base())
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+
         //Fragments
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainFrame) as NavHostFragment
         //Navigation
@@ -32,11 +29,15 @@ class MainActivity : AppCompatActivity() {
         //Badge
         binding.bottomNavMenu.getOrCreateBadge(R.id.orderFragment)
         val badge = binding.bottomNavMenu.getOrCreateBadge(R.id.orderFragment)
+        //viewModel
+        val viewModelFactory = MenuViewModelFactory(MenuRepository.BaseData)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        viewModel.init(savedInstanceState, navController)
         //Observe
-        MenuRepository.Base.customOrderList.observe(this) { updatedOrderList ->
+        MenuRepository.BaseData.customOrderList.observe(this) { updatedOrderList ->
             viewModel.changeTotalSum(updatedOrderList)
-            badge.number = totalSum
-            badge.isVisible = totalSum > 0
+            badge.number = MenuRepository.BaseData.totalSum
+            badge.isVisible = MenuRepository.BaseData.totalSum > 0
             badge.maxCharacterCount = 6
         }
     }

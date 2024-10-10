@@ -13,17 +13,18 @@ import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
 import com.nelalexxx.myfoodapp.databinding.MenuItemLayoutBinding
 
 
-class MenuRVAdapter (
+class MenuRVAdapter(
     private var menu: List<MenuItem>,
     private var viewModel: MainViewModel
-): RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() { // adapter=recyclerview.adapter<viewholder>()
+) : RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() { // adapter=recyclerview.adapter<viewholder>()
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // binding
         val binding = MenuItemLayoutBinding.bind(itemView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.menu_item_layout, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.menu_item_layout, parent, false)
         return MenuViewHolder(view)
     }
 
@@ -41,7 +42,7 @@ class MenuRVAdapter (
             addToOrderBtn.setOnClickListener {
                 viewModel.addToOrder(menuItem)
                 //notification
-                Snackbar.make(it, "Добавлено в заказ", Snackbar.LENGTH_SHORT) .apply {
+                Snackbar.make(it, "Добавлено в заказ", Snackbar.LENGTH_SHORT).apply {
                     view.layoutParams = (view.layoutParams as FrameLayout.LayoutParams).apply {
                         gravity = Gravity.BOTTOM
                         bottomMargin = 200 // Set the bottom margin to 200 pixels
@@ -50,9 +51,5 @@ class MenuRVAdapter (
                 }
             }
         }
-
     }
-
-
-
 }

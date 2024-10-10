@@ -11,7 +11,7 @@ import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
 import com.nelalexxx.myfoodapp.databinding.OrderFragmentLayoutBinding
 import com.nelalexxx.myfoodapp.ui.fragments.BindingFragment
 
-class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
+class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>() {
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = OrderFragmentLayoutBinding::inflate
     private val viewModel: MainViewModel by activityViewModels() // Use activityViewModels()
@@ -20,10 +20,8 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
         super.onViewCreated(view, savedInstanceState)
 
 
-
-
         // Обязательная штука подключения адаптера
-        val adapter = OrderRVAdapter(MenuRepository.Base.customOrderList.value!!, viewModel)
+        val adapter = OrderRVAdapter(MenuRepository.BaseData.customOrderList.value!!, viewModel)
         binding.menuRV.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@OrderFragment.context)
@@ -32,12 +30,12 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>(){
         }
 
         // В вашем OrderFragment
-        MenuRepository.Base.customOrderList.observe(viewLifecycleOwner) { updatedOrderList ->
+        MenuRepository.BaseData.customOrderList.observe(viewLifecycleOwner) { updatedOrderList ->
             adapter.order = updatedOrderList
             adapter.notifyDataSetChanged()
 
             val sum = updatedOrderList.sumOf { it.count * it.price }
-            binding.sumTV.text = "Сумма: $sum рублей\nСО СКИДКОЙ ДЛЯ ОЛЕГА: ${sum/3} РУБЛЯ"
+            binding.sumTV.text = "Сумма: $sum рублей\nСО СКИДКОЙ ДЛЯ ОЛЕГА: ${sum / 3} РУБЛЯ"
 
         }
 

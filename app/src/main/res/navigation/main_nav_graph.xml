@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/menuFragment">
+    app:startDestination="@id/loadingFragment">
 
     <fragment
         android:id="@+id/menuFragment"
@@ -18,6 +18,14 @@
         android:label="OrderFragment">
         <action
             android:id="@+id/action_orderFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.nelalexxx.myfoodapp.ui.fragments.LoadingFragment"
+        android:label="LoadingFragment">
+        <action
+            android:id="@+id/action_loadingFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
 </navigation>
