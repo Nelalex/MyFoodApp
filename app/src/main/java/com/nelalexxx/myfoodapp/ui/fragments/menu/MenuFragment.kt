@@ -19,15 +19,14 @@ class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>() {
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = MenuFragmentLayoutBinding::inflate
 
-    @Inject
-    lateinit var menuRepository: MenuRepository // Внедряем MenuRepository
+
 
     private val viewModel: MainViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //adapter
-        val adapter = MenuRVAdapter(menuRepository.customMenuList, viewModel)
+        val adapter = MenuRVAdapter(viewModel.repository.customMenuList, viewModel)
         binding.menuRV.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@MenuFragment.context)

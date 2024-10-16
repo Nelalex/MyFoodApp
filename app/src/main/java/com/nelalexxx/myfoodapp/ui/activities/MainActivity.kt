@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    @Inject
-    lateinit var menuRepository: MenuRepository // Inject MenuRepository
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         //viewModel
         viewModel.init(savedInstanceState, navController)
         //Observe
-        menuRepository.customOrderList.observe(this) { updatedOrderList ->
+        viewModel.repository.customOrderList.observe(this) { updatedOrderList ->
             viewModel.changeTotalSum(updatedOrderList)
-            badge.number = menuRepository.totalSum
-            badge.isVisible = menuRepository.totalSum > 0
+            badge.number = viewModel.repository.totalSum
+            badge.isVisible = viewModel.repository.totalSum > 0
             badge.maxCharacterCount = 6
         }
     }

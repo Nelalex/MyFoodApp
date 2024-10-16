@@ -19,19 +19,18 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>() {
         get() = OrderFragmentLayoutBinding::inflate
     private val viewModel: MainViewModel by activityViewModels() // Use activityViewModels()
 
-    @Inject
-    lateinit var menuRepository: MenuRepository // Внедряем MenuRepository
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = OrderRVAdapter(menuRepository.customOrderList.value!!, viewModel)
+        val adapter = OrderRVAdapter(viewModel.repository.customOrderList.value!!, viewModel)
         binding.menuRV.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@OrderFragment.context)
         }
 
-        menuRepository.customOrderList.observe(viewLifecycleOwner) { updatedOrderList ->
+        viewModel.repository.customOrderList.observe(viewLifecycleOwner) { updatedOrderList ->
             adapter.order = updatedOrderList
             adapter.notifyDataSetChanged()
 

@@ -22,7 +22,7 @@ import javax.inject.Named
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: MenuRepository,
+    val repository: MenuRepository,
     @Named("Firebase_app")
     private val firebaseApp: FirebaseApp
 ) : ViewModel()  {
