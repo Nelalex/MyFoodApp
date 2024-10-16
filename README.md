@@ -1,5 +1,6 @@
 A project that implements the main functionality of any FoodApp (menu+order basket) with LiveData and Firebase Storage
 
+/*This info for my own use. Dependencies to understand what i use here and can rewatch
 //LiveData
 implementation(libs.androidx.lifecycle.livedata.ktx)
 //Material design
