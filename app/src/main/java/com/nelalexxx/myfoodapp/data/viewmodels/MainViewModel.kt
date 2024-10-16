@@ -7,20 +7,31 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.storage
 import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.data.models.MenuItem
 import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withTimeout
+import javax.inject.Inject
+import javax.inject.Named
 
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val repository: MenuRepository,
+    @Named("Firebase_app")
+    private val firebaseApp: FirebaseApp
+) : ViewModel()  {
 
-class MainViewModel(private val repository: MenuRepository) : ViewModel() {
-
+    init {
+        firebaseApp
+    }
     fun changeTotalSum(pricesList: MutableList<MenuItem>) {
-        MenuRepository.BaseData.totalSum = pricesList.sumOf { it.count * it.price }
+        repository.totalSum = pricesList.sumOf { it.count * it.price }
     }
 
     fun addToOrder(menuItem: MenuItem) {
@@ -51,7 +62,7 @@ class MainViewModel(private val repository: MenuRepository) : ViewModel() {
                     menuItems.add(menuItem)
                 }
                 if (menuItems.isNotEmpty())
-                    MenuRepository.BaseData.setMenuList(menuItems)
+                    repository.setMenuList(menuItems)
             }
         } catch (e: TimeoutCancellationException) {
             Log.d("TEST", "Данные слишком долго подгружаются, загружаем из памяти")

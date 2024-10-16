@@ -10,16 +10,24 @@ import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
 import com.nelalexxx.myfoodapp.databinding.MenuFragmentLayoutBinding
 import com.nelalexxx.myfoodapp.ui.fragments.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+
+@AndroidEntryPoint
 class MenuFragment : BindingFragment<MenuFragmentLayoutBinding>() {
     override val bindingInflater: (LayoutInflater) -> ViewBinding
         get() = MenuFragmentLayoutBinding::inflate
+
+    @Inject
+    lateinit var menuRepository: MenuRepository // Внедряем MenuRepository
+
     private val viewModel: MainViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //adapter
-        val adapter = MenuRVAdapter(MenuRepository.BaseData.customMenuList, viewModel)
+        val adapter = MenuRVAdapter(menuRepository.customMenuList, viewModel)
         binding.menuRV.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@MenuFragment.context)

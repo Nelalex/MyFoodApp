@@ -1,20 +1,24 @@
 package com.nelalexxx.myfoodapp.ui.activities
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.nelalexxx.myfoodapp.R
 import com.nelalexxx.myfoodapp.data.repositories.MenuRepository
 import com.nelalexxx.myfoodapp.data.viewmodels.MainViewModel
-import com.nelalexxx.myfoodapp.data.viewmodels.MenuViewModelFactory
 import com.nelalexxx.myfoodapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: MainViewModel by viewModels()
 
-    private lateinit var viewModel: MainViewModel
+    @Inject
+    lateinit var menuRepository: MenuRepository // Inject MenuRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +34,12 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavMenu.getOrCreateBadge(R.id.orderFragment)
         val badge = binding.bottomNavMenu.getOrCreateBadge(R.id.orderFragment)
         //viewModel
-        val viewModelFactory = MenuViewModelFactory(MenuRepository.BaseData)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.init(savedInstanceState, navController)
         //Observe
-        MenuRepository.BaseData.customOrderList.observe(this) { updatedOrderList ->
+        menuRepository.customOrderList.observe(this) { updatedOrderList ->
             viewModel.changeTotalSum(updatedOrderList)
-            badge.number = MenuRepository.BaseData.totalSum
-            badge.isVisible = MenuRepository.BaseData.totalSum > 0
+            badge.number = menuRepository.totalSum
+            badge.isVisible = menuRepository.totalSum > 0
             badge.maxCharacterCount = 6
         }
     }

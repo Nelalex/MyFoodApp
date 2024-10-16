@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
-
 android {
     namespace = "com.nelalexxx.myfoodapp"
     compileSdk = 34
@@ -51,12 +52,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     //LiveData
     implementation(libs.androidx.lifecycle.livedata.ktx)
-    //Material design
-    implementation(libs.material)
-    // Architectural Components(google ViewModel)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+
+
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
@@ -66,5 +67,11 @@ dependencies {
     // Navigation Components
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    //Dagger - Hilt
+
+
+    implementation(libs.hilt.android.v2511)
+    kapt(libs.hilt.android.compiler.v2511)
 
 }
