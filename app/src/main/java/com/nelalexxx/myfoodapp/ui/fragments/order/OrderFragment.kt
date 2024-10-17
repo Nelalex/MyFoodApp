@@ -19,8 +19,6 @@ class OrderFragment : BindingFragment<OrderFragmentLayoutBinding>() {
         get() = OrderFragmentLayoutBinding::inflate
     private val viewModel: MainViewModel by activityViewModels() // Use activityViewModels()
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

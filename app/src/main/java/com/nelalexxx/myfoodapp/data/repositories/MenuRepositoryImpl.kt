@@ -8,9 +8,9 @@ import javax.inject.Inject
 class MenuRepositoryImpl @Inject constructor() : MenuRepository {
 
     override var customMenuList: List<MenuItem> = listOf(
-        // to see the diff between local and firebase data
+        // to see the diff between local and firebase data i comment 1 item
         // MenuItem(R.drawable.kartofel, "НОВИНКА! Картофель сьедобный", 7777),
-        // MenuItem(R.drawable.steik,"Хит продаж! Обычный стейк филе Миньон", 500),
+        MenuItem(R.drawable.steik,"Хит продаж! Обычный стейк филе Миньон", 500),
         MenuItem(R.drawable.booter, "Бутерброд c вкуснейшей колбасой", 1000),
         MenuItem(R.drawable.pelmeni, "Пельмени как у бабушки", 2000),
         MenuItem(R.drawable.makaroni, "Те самые макароны с сосикой", 4000)
